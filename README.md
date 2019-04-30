@@ -73,7 +73,7 @@ Description: Describes and documents project.
     I decided to allow the user to use the command line to specify a file they would like to evaluate rather than the ex.txt file.
 
 #### Known Deficiencies and Bugs
-    If an error is enocuntered one character before the new line character, then the error message will display the next on the next line, and the line number will be increased and therefore off by +1.
+    If an error is enocuntered one character before the new line character, then the error message will display the next on the next line, and the line number will be increased and therefore be off by +1.
 
 #### Lessons Learned
 *   Read as many resources as you can before deciding if something is worth implementing / pursuing.
