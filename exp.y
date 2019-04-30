@@ -1,7 +1,13 @@
+/**********************************************
+Name: Zach Selchau, cssc0418, Red id: 820533188
+Project: CS 530 Assignment 2
+File: exp.y
+Description: Defines the rules for parsing a text file.
+**********************************************/
+
 %{
 #include <stdio.h>
 #include <stdlib.h>
-/*#include "lex.yy.c"*/
 int yylex();
 void yyerror(const char *s);
 
@@ -65,14 +71,9 @@ equ     :equals                 {printf("=");}
 
 %%
 int main (int argc, char* argv[]){
-<<<<<<< HEAD
-    if(argc == 2) yyin=fopen(argv[1],"r+");
-    else yyin=fopen("ex.txt","r+");
-=======
     if(argc == 2) yyin=fopen(argv[1], "r+");
     else yyin=fopen("ex.txt","r+");
     if(yyin == NULL) return 0;
->>>>>>> b79ce103fda4806ead7109a99507035d63208697
     return yyparse();
 }
 

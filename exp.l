@@ -1,3 +1,9 @@
+/**********************************************
+Name: Zach Selchau, cssc0418, Red id: 820533188
+Project: CS 530 Assignment 2
+File: exp.l
+Description: Defines the rules for tokenizing a text file.
+**********************************************/
 %{
 #include "exp.tab.h"
 %}

@@ -1,9 +1,8 @@
 ###########################################################
-#Name: Zach Selchau
-#username: cssc0418
+#Name: Zach Selchau, cssc0418, Red id: 820533188
 #Project: CS530 Assignment 2
 #File: Makefile
-#Notes: Allows for easy compilation of the program.
+#Description: Allows for easy compilation of the program.
 ###########################################################
 
 #variables
