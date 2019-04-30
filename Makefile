@@ -1,25 +1,26 @@
 ###########################################################
 #Name: Zach Selchau
 #username: cssc0418
-#Project: CS530 Assignment 1
-#File: Makefile
-#Notes: Allows for easy compilation of the program.
-
-#Name: Darpan Beri
-#username: cssc0429
-#Project: CS530 Assignment 1
+#Project: CS530 Assignment 2
 #File: Makefile
 #Notes: Allows for easy compilation of the program.
 ###########################################################
 
 #variables
-CC=g++
+CC=gcc
+LC=lex
+YC=yacc
 
-all: xbd
-	$(CC) xbd.cpp -o xbd
+all: exp
+	$(YC) exp.y -d
+	$(LC) exp.l
+	$(CC) lex.yy.c y.tab.c -o exp
 	export PATH="./:$PATH"
 
 clean:
-	rm -rf xbd
+	rm y.tab.c
+	rm y.tab.h
+	rm lex.yy.c
+	rm -rf exp
     
 #######################[ EOF: Makefile ]###################
