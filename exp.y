@@ -63,8 +63,9 @@ equ     :equals                 {printf("=");}
         ;
 
 %%
-int main (void){
-    yyin=fopen("ex.txt","r+");
+int main (int argc, char* argv[]){
+    if(argc == 2) yyin=fopen(argv[1],"r+");
+    else yyin=fopen("ex.txt","r+");
     return yyparse();
 }
 
