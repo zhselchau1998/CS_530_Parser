@@ -16,7 +16,10 @@ extern char* yytext;
 extern FILE* yyin;
 %}
 
+/*start on the line rule*/
 %start line
+
+/*all tokens*/
 %token identifier
 %token operation
 %token equals
@@ -71,7 +74,7 @@ equ     :equals                 {printf("=");}
 
 %%
 int main (int argc, char* argv[]){
-    if(argc == 2) yyin=fopen(argv[1], "r+");
+    if(argc == 2) yyin=fopen(argv[1], "r+");/*For ease of testing you can pass in a file on the command line*/
     else yyin=fopen("ex.txt","r+");
     if(yyin == NULL) return 0;
     return yyparse();

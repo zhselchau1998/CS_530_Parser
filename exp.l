@@ -8,12 +8,12 @@ Description: Defines the rules for tokenizing a text file.
 #include "exp.tab.h"
 %}
 
-%option yylineno
+%option yylineno/*For line numbers*/
 
 %%
 
 [a-zA-Z][a-zA-Z0-9]+    return identifier;
-[a-zA-Z]                return identifier;
+[a-zA-Z]                return identifier;/*Case of a single character*/
 [\+\-\*\/\%]            return operation;
 [=]                     return equals;
 [;]                     return semicolon;
@@ -21,7 +21,7 @@ Description: Defines the rules for tokenizing a text file.
 [)]                     return closeParen;
 [\n]                    return newline;
 [ \t]+                  return whiteSpace;
-.                       return yytext[0];
+.                       return yytext[0];/*Pass whatever was read*/
 
 %%
 
