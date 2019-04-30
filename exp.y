@@ -6,6 +6,7 @@ void yyerror(const char *s);
 
 extern int yylineno;
 extern char* yytext;
+extern FILE* yyin;
 %}
 
 %start line
@@ -63,6 +64,7 @@ equ     :equals                 {printf("=");}
 
 %%
 int main (void){
+    yyin=fopen("ex.txt","r+");
     return yyparse();
 }
 
