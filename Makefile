@@ -8,18 +8,22 @@
 
 #variables
 CC=gcc
-LC=lex
-YC=yacc
+LC=flex
+YC=bison
 
-all: exp
-	$(YC) exp.y -d
-	$(LC) exp.l
-	$(CC) lex.yy.c y.tab.c -o exp
+all: flex bison
+	$(CC) lex.yy.c exp.tab.c -o exp
 	export PATH="./:$PATH"
+	
+flex:
+	$(LC) exp.l
+	
+bison:
+	$(YC) -d exp.y
 
 clean:
-	rm y.tab.c
-	rm y.tab.h
+	rm exp.tab.c
+	rm exp.tab.h
 	rm lex.yy.c
 	rm -rf exp
     
