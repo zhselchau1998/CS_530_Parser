@@ -13,16 +13,16 @@ Description: Defines the rules for tokenizing a text file.
 
 %%
 
-[a-zA-Z][a-zA-Z0-9]+    return identifier;
-[a-zA-Z]                return identifier;/*Case of a single character*/
-[\+\-\*\/\%]            return operation;
-[=]                     return equals;
-[;]                     return semicolon;
-[(]                     return openParen;
-[)]                     return closeParen;
-[\n]                    return newline;
-[ \t]+                  return whiteSpace;
-.                       return yytext[0];/*Pass whatever was read*/
+[a-zA-Z][a-zA-Z0-9]+    return identifier;  /*Identifiers*/
+[a-zA-Z]                return identifier;  /*Case of a single character*/
+[\+\-\*\/\%]            return operation;   /*Operators*/
+[=]                     return equals;      /*Determining an assignment*/
+[;]                     return semicolon;   /*Terminating an assignment*/
+[(]                     return openParen;   /*Parenthesis*/
+[)]                     return closeParen;  /*Parenthesis*/
+[\n]                    return newline;     /*For concatenation*/
+[ \t]+                  return whiteSpace;  /*Pass whitespace chunks as a single token*/
+.                       return yytext[0];   /*Pass whatever was read*/
 
 %%
 
