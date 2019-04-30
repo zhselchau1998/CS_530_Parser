@@ -8,7 +8,8 @@ Description: Defines the rules for tokenizing a text file.
 #include "exp.tab.h"
 %}
 
-%option yylineno/*For line numbers*/
+/*For line numbers*/
+%option yylineno
 
 %%
 
