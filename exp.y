@@ -40,9 +40,11 @@ line    :assignment newline         {printf(": is a valid assignment on line %d\
         ;
 
 assignment  :id ws equ ws expression ws sc ws   {;}             /*Basic case for assignment (only 1 case)*/
+            |ws assignment                      {;}             /*Leading whitespace case*/
             ;
 
 expression  :id ws op ws id                             {;}     /*Basic case*/
+            |ws expression                              {;}     /*Leading whitespace case*\
             |opar expression cpar                       {;}     /*Basic parenthesis case*/
             |expression ws op ws id                     {;}     /*Basic recurssion case*/
             |id ws op ws opar expression cpar           {;}     /*Parenthesis open on 2nd identifier and close on last identifier case*/
