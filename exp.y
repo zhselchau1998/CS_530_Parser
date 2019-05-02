@@ -33,10 +33,12 @@ extern FILE* yyin;
 
 line    :assignment newline         {printf(": is a valid assignment on line %d\n", yylineno-1);}   /*Assignment on first line*/
         |expression ws newline      {printf(": is a valid expression on line %d\n", yylineno-1);}   /*Expression on first line*/
-        |error newline              {yyerrok;}                                                      /*Error on first line*/
+        |ws expression ws newline   {printf(": is a valid expression on line %d\n", yylineno-1);}   /*Leading whitespace w/ expression*/
+	|error newline              {yyerrok;}                                                      /*Error on first line*/
         |line assignment newline    {printf(": is a valid assignment on line %d\n", yylineno-1);}   /*Assignment recurssion*/
         |line expression ws newline {printf(": is a valid expression on line %d\n", yylineno-1);}   /*Expression recurssion*/
-        |line error newline         {yyerrok;}                                                      /*Error recurssion*/
+        |line ws expression ws newline  {printf(": is a valid expression on line %d\n", yylineno-1);}   /*Leading whitespace w/ expression*/
+	|line error newline         {yyerrok;}                                                      /*Error recurssion*/
         ;
 
 assignment  :id ws equ ws expression ws sc ws   {;}             /*Basic case for assignment (only 1 case)*/
@@ -44,7 +46,6 @@ assignment  :id ws equ ws expression ws sc ws   {;}             /*Basic case for
             ;
 
 expression  :id ws op ws id                             {;}     /*Basic case*/
-            |ws expression                              {;}     /*Leading whitespace case*\
             |opar expression cpar                       {;}     /*Basic parenthesis case*/
             |expression ws op ws id                     {;}     /*Basic recurssion case*/
             |id ws op ws opar expression cpar           {;}     /*Parenthesis open on 2nd identifier and close on last identifier case*/
